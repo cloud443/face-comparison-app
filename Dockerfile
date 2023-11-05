@@ -13,8 +13,10 @@ RUN apt-get update && apt-get install -y cmake \
     python3-dev \
     libgl1-mesa-glx \
  && rm -rf /var/lib/apt/lists/* \
- && pip install --no-cache-dir -r requirements.txt
+ && pip install --no-cache-dir --upgrade pip
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install Flask --upgrade
+RUN pip install Werkzeug --upgrade
 
 CMD ["python", "runserver.py"]
